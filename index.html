@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitney Lan | 品牌社群與行銷整合顧問</title>
+    <style>
+        /* 
+           Font Setup: 
+           TaipeiSansTCBeta-Bold, TaipeiSansTCBeta-Light 
+           (Assuming these are installed locally or provided by user environment)
+        */
+        @font-face {
+            font-family: 'TaipeiSansTC';
+            src: local('TaipeiSansTCBeta-Bold');
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: 'TaipeiSansTC';
+            src: local('TaipeiSansTCBeta-Light');
+            font-weight: 300;
+        }
+
+        :root {
+            --bg-color: #f9f8f6; /* 柔和暖白 */
+            --text-main: #333333; /* 深灰黑 */
+            --text-muted: #666666; /* 灰 */
+            --accent-color: #8e8e8e; /* 細線與裝飾色 */
+            --card-bg: #ffffff;
+            --max-width: 900px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'TaipeiSansTC', "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 1px;
+            background-color: var(--accent-color);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+        }
+
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Header & Logo */
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .hero-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Hero Image */
+        .hero-image-wrap {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 60px;
+            overflow: hidden;
+        }
+
+        .hero-image-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(10%);
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+
+        .philosophy blockquote {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 40px;
+            border-left: 2px solid #eee;
+            padding-left: 24px;
+        }
+
+        /* Expertise Tags */
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            color: var(--text-muted);
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border: 1px solid #efefef;
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: #ddd;
+        }
+
+        .price-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .price-card .suitability {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .price-card ul {
+            list-style: none;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .price-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .price-card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+        }
+
+        .price-amount {
+            font-weight: bold;
+            font-size: 1rem;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
+        }
+
+        /* Ad Services & Single Services */
+        .service-list {
+            max-width: 750px;
+            margin: 50px auto 0;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 25px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .service-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .service-price {
+            font-size: 0.9rem;
+            font-weight: bold;
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            text-align: center;
+            padding: 60px 40px;
+            background: #fff;
+            border: 1px solid #eee;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 50px;
+            background-color: var(--text-main);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: opacity 0.3s;
+        }
+
+        .contact-btn:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            section { padding: 60px 0; }
+            .container { padding: 0 25px; }
+            .service-item { flex-direction: column; }
+            .service-price { margin-left: 0; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <img src="S__122871895.jpg" alt="Whitney Lan Logo" class="logo">
+            <div class="hero-title">Whitney Lan</div>
+            <div class="hero-subtitle">品牌社群與行銷整合顧問</div>
+            <p class="text-muted">協助品牌釐清定位、建立內容方向，並把社群經營轉化成實際商業成果。</p>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-image-wrap">
+                <img src="portrait.jpg" alt="Whitney Lan">
+            </div>
+            <div class="philosophy">
+                <blockquote>
+                    多數品牌的問題，不是做得不夠多，而是做得沒有方向。<br><br>
+                    在資訊過載的環境裡，曝光從來不是難事，難的是——什麼該做、什麼不該做。
+                </blockquote>
+                <p>我擅長從品牌現況出發，釐清策略，把社群內容、短影音、廣告與導流整合在同一條路徑上，讓每一次發聲，都有目的，而不是只是存在。</p>
+                <p>我不追求短期爆紅，而是讓品牌在持續曝光中，慢慢建立被信任、被選擇的理由。</p>
+                <p>因為真正有效的行銷，不是被看到，而是被記住之後，還願意再回來。</p>
+                
+                <div class="expertise-tags">
+                    <span class="tag">品牌社群經營</span>
+                    <span class="tag">FB / IG / LINE 內容規劃</span>
+                    <span class="tag">短影音企劃</span>
+                    <span class="tag">廣告策略與投放</span>
+                    <span class="tag">導流與轉換整合</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="plans" style="background-color: #fff;">
+        <div class="container">
+            <h2>長期合作方案</h2>
+            <div class="pricing-grid">
+                <!-- Plan 1 -->
+                <div class="price-card">
+                    <h3>入門型｜品牌啟動方案</h3>
+                    <span class="suitability">適合：剛起步／開幕前／方向不明確</span>
+                    <ul>
+                        <li>品牌現況健檢（IG / FB / LINE）</li>
+                        <li>專業排程規劃與發文建議</li>
+                        <li>首頁優化建議（Bio / 視覺 / 結構）</li>
+                    </ul>
+                    <div class="price-amount">NT$8,000 / 次 <span class="text-muted" style="font-weight: normal;">(單平台)</span></div>
+                </div>
+                <!-- Plan 2 -->
+                <div class="price-card">
+                    <h3>核心型｜內容策略方案</h3>
+                    <span class="suitability">適合：已有基礎，想穩定經營</span>
+                    <ul>
+                        <li>社群策略整月規劃（定位 / 受眾 / 內容方向）</li>
+                        <li>客製風格圖文設計（貼文內容）</li>
+                        <li>成效簡報（互動數據摘要）</li>
+                        <li>競品分析</li>
+                    </ul>
+                    <div class="price-amount">NT$15,000 – 25,000 / 月</div>
+                    <p class="text-muted" style="margin-top:10px;">* 依貼文數量與需求調整</p>
+                </div>
+                <!-- Plan 3 -->
+                <div class="price-card">
+                    <h3>成長型｜社群經營＋流量放大</h3>
+                    <span class="suitability">適合：希望帶來曝光＋互動＋轉單</span>
+                    <ul>
+                        <li>IG / FB 月代操（貼文發布＋互動建議）</li>
+                        <li>每月內容規劃＋圖文設計（約8–12則）</li>
+                        <li>活動企劃（抽獎 / 檔期操作）</li>
+                        <li>短影音企劃＋拍攝＋剪輯（Reels）</li>
+                    </ul>
+                    <div class="price-amount">NT$30,000 – 60,000 / 月</div>
+                    <p class="text-muted" style="margin-top:10px;">* 依內容量與影音比例調整</p>
+                </div>
+            </div>
+            <p class="text-center text-muted" style="margin-top: 40px;">
+                可搭配廣告策略與投放（不含廣告費）<br>
+                可延伸 LINE 導流與會員經營
+            </p>
+        </div>
+    </section>
+
+    <section id="ads">
+        <div class="container">
+            <h2>廣告策略與投放服務</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>廣告策略規劃</h4>
+                        <p>投放目標設定、受眾建議、素材與預算配置策略</p>
+                    </div>
+                    <div class="service-price">NT$5,000 – 10,000 / 次</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>廣告投放設定（一次性）</h4>
+                        <p>帳戶設定、1–3組廣告組建立、基本投放設定</p>
+                    </div>
+                    <div class="service-price">NT$5,000 – 12,000 / 次</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>廣告優化陪跑（月）</h4>
+                        <p>每週數據檢視、投放優化建議、素材優化方向</p>
+                    </div>
+                    <div class="service-price">NT$8,000 – 15,000 / 月</div>
+                </div>
+            </div>
+            <p class="text-center text-muted" style="margin-top: 30px;">
+                備註：廣告預算由客戶另行支付。預算 3 萬以下建議以測試投放＋素材優化為主。
+            </p>
+        </div>
+    </section>
+
+    <section id="single-services" style="background-color: #fff;">
+        <div class="container">
+            <h2>單項服務</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>社群圖文設計（6則起）</h4>
+                        <p>含文案＋視覺設計</p>
+                    </div>
+                    <div class="service-price">NT$6,000 – 12,000 / 組</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>短影音製作</h4>
+                        <p>含企劃＋拍攝＋剪輯 (30–60秒 / 60秒以上)</p>
+                    </div>
+                    <div class="service-price">NT$15,000 – 60,000 / 3支</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>行銷顧問諮詢</h4>
+                        <p>品牌策略 / 社群健檢 / 開幕規劃</p>
+                    </div>
+                    <div class="service-price">NT$2,000 – 3,500 / 小時</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>LINE 官方帳號建置 / 優化</h4>
+                        <p>選單設計 / 自動回覆邏輯 / 導流結構規劃</p>
+                    </div>
+                    <div class="service-price">NT$8,000 – 20,000 / 次</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>活動企劃（專案制）</h4>
+                        <p>開幕活動 / 檔期操作 / 快閃活動</p>
+                    </div>
+                    <div class="service-price">NT$10,000 – 30,000 / 案</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visual-services">
+        <div class="container">
+            <h2>加值服務 / 品牌視覺</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>LOGO 設計</h4>
+                        <p>提供 3 款提案</p>
+                    </div>
+                    <div class="service-price">NT$8,000 – 20,000</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h4>社群視覺設計</h4>
+                        <p>FB 封面、Banner 等視覺素材</p>
+                    </div>
+                    <div class="service-price">NT$2,000 – 5,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2 style="border:none; padding:0; margin-bottom: 30px;">開始討論需求</h2>
+                <p style="font-size: 0.95rem;">若您有合作意向，歡迎來信洽詢。<br>請在信中提供以下資訊，讓我能更精準地為您評估：</p>
+                <ul style="list-style:none; font-size: 0.9rem; margin: 20px 0; color: var(--text-muted);">
+                    <li>· 目前需求</li>
+                    <li>· 詢問單次還是長期合作</li>
+                    <li>· 預算區間</li>
+                    <li>· 希望開始時間</li>
+                </ul>
+                <a href="mailto:showlanlan@gmail.com" class="contact-btn">洽詢合作</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Whitney Lan. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
